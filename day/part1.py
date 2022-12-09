@@ -1,5 +1,5 @@
 def main():
-    data = open("dayN\day_N_input.txt").read().splitlines()
+    # data = open("dayN\day_N_input.txt").read().splitlines()
     print()
 
 
