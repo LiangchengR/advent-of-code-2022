@@ -10,6 +10,18 @@ def main():
 
 def generate_stacks_and_procedure():
     data = open("day5\day_5_input.txt").read().splitlines()
+    # data = [
+    #     "    [D]    ",  # 11
+    #     "[N] [C]    ",
+    #     "[Z] [M] [P]",
+    #     " 1   2   3 ",
+    #     "",
+    #     "move 1 from 2 to 1",
+    #     "move 3 from 1 to 3",
+    #     "move 2 from 2 to 1",
+    #     "move 1 from 1 to 2",
+    # ]
+    # print(data)
 
     crate_stacks = []
     is_initializing_new_stacks = True
@@ -48,8 +60,12 @@ def execute_stack_procedure(stacks, procedure):
         from_stack_index = int(instruction_string.split(" ")[3]) - 1
         to_stack_index = int(instruction_string.split(" ")[5]) - 1
 
+        crates_to_move = stacks[from_stack_index][-quantity:]
+        for crate in crates_to_move:
+            stacks[to_stack_index].append(crate)
+
         for i in range(0, quantity):
-            stacks[to_stack_index].append(stacks[from_stack_index].pop())
+            stacks[from_stack_index].pop()
 
     return stacks
 
